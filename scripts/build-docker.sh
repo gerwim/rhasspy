@@ -28,11 +28,11 @@ tags=()
 
 # Latest version
 if [[ -z "${NO_DOCKER_LATEST}" ]]; then
-    tags+=(--tag "${DOCKER_REGISTRY}/rhasspy/rhasspy:latest")
+    tags+=(--tag "${DOCKER_REGISTRY}/gerwim/rhasspy:latest")
 fi
 
 # Specific version
-tags+=(--tag "${DOCKER_REGISTRY}/rhasspy/rhasspy:${version}")
+tags+=(--tag "${DOCKER_REGISTRY}/gerwim/rhasspy:${version}")
 
 # -----------------------------------------------------------------------------
 
