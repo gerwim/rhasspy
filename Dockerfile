@@ -139,7 +139,7 @@ COPY configure config.sub config.guess \
      ${BUILD_DIR}/
 
 RUN cd ${BUILD_DIR} && \
-    ./configure --enable-in-place --prefix=${APP_DIR}/.venv
+    ./configure --enable-in-place --disable-deepspeech --prefix=${APP_DIR}/.venv
 
 COPY scripts/install/ ${BUILD_DIR}/scripts/install/
 
