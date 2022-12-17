@@ -148,7 +148,13 @@ COPY scripts/install/ ${BUILD_DIR}/scripts/install/
 
 COPY RHASSPY_DIRS ${BUILD_DIR}/
 
+# Somehow the arm/v7 build errors because it can't find a specific certificate 
+RUN echo "insecure" >> ~/.curlrc
+
 RUN --mount=type=cache,id=pip-build,target=/root/.cache/pip \
+    curl https://sh.rustup.rs -sSf | sh -s -- -y && \
+    . "$HOME/.cargo/env" && \
+    rustup update && \
     export PIP_INSTALL_ARGS="-f ${DOWNLOAD_DIR}/shared -f ${DOWNLOAD_DIR}/${TARGETARCH}${TARGETVARIANT}" && \
     export PIP_PREINSTALL_PACKAGES='numpy==1.20.1 scipy==1.5.1' && \
     export PIP_VERSION='pip<=22.3.1' && \
